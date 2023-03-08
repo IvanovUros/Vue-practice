@@ -1,15 +1,59 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <CardTest></CardTest>
+    <CardTest>Card Content</CardTest>
+    <CardTest>
+      <h2>Card Content</h2>
+    </CardTest>
+    <CardTest> 
+      <img src="https://picsum.photos/200">
+    </CardTest>
+
+    <CardTest>
+      <template v-slot:header> 
+        <h3>Header</h3>
+      </template>
+      <template v-slot:default> 
+        <img src="https://picsum.photos/200">
+      </template>
+      <template v-slot:footer> 
+        <button>View Details</button>
+      </template>
+    </CardTest>
+
+    <NameList>
+      <template v-slot:default="slotProps">
+        {{ slotProps.firstName }} {{ slotProps.lastName }}
+      </template>
+    </NameList>
+    <NameList>
+      <template v-slot:default="slotProps">
+        {{ slotProps.lastName }} {{ slotProps.firstName }}
+      </template>
+    </NameList>
+    <NameList>
+      <template v-slot:default="slotProps">
+        {{ slotProps.firstName }}
+      </template>
+    </NameList>
+  </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CardTest from './components/CardTest.vue'
+import NameList from './components/NameList.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    CardTest,
+    NameList,
+  },
+  data() {
+    return {
+
+    }
   }
 }
 </script>
